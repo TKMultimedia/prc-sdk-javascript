@@ -2,24 +2,15 @@ import AbstractApi from './AbstractApi';
 import { AxiosPromise } from 'axios';
 import { get as _get } from 'lodash';
 import IUserGroup from '../Model/IUserGroup';
-import { TransformFunction } from '../Types/TransformFunction';
+import { groupResponseTransformer, transformSingleGroupResponse } from '../Transfomer/GroupResponseTransformer';
 
 /**
  * @since v1.0.0
  * Implemented by ThienKhoi Tran <tranthienkhoi@gmail.com>
  */
 
-const transformer: TransformFunction<IUserGroup[]> = (
-  data: string
-): IUserGroup[] =>
-  _get(JSON.parse(data), 'data.groups', []);
-
 class GroupApi extends AbstractApi {
   private readonly ENDPOINT: string = 'graphql';
-
-  public constructor(env: string, token?: string) {
-    super(env, token, transformer);
-  }
 
   // --------------------------------------------------------------------------------------------
   // Public methods
@@ -31,10 +22,27 @@ class GroupApi extends AbstractApi {
         name
         id
         isAdmin
+        description
       }
     }`;
 
-    return this.http.post(this.ENDPOINT, { query });
+    return this.http.post(this.ENDPOINT, { query }, { transformResponse: groupResponseTransformer });
+  }
+
+  public upsertGroup(groupData: IUserGroup): AxiosPromise<IUserGroup> {
+    const query: string = `mutation updateGroup($groupData: UserGroupInput!) {
+      group(group: $groupData) {
+        id,
+        description,
+        name
+        isAdmin
+      }
+    }`;
+
+    return this.http.post(
+      this.ENDPOINT,
+      { query, variables: groupData },
+      { transformResponse: transformSingleGroupResponse });
   }
 }
 

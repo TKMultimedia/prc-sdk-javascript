@@ -1,0 +1,57 @@
+{
+  "extends": [
+    "tslint:all"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "webpack.config.js"
+    ]
+  },
+  "rules": {
+    "ban-ts-ignore": false,
+    // temporary, until we fixed the scss schema late build
+    "completed-docs": false,
+    "comment-format": [true, "check-space"],
+    "file-name-casing": [
+      true,
+      "pascal-case"
+    ],
+    "deprecation": {
+      "severity": "warning"
+    },
+    "no-boolean-literal-compare": false,
+    "no-inferred-empty-object-type": false,
+    "no-inferrable-types": false,
+    "no-default-export": false,
+    "no-default-import": false,
+    // TODO: temporary until we fix build issue. e.g: https://pipelines.puppet.com/vroomsysadmin/builds/506160
+    "no-unsafe-any": false,
+    "no-submodule-imports": false,
+    "no-use-before-declare": false,
+    "newline-per-chained-call": false,
+    "max-line-length": {
+      "severity": "warning",
+      "options": [
+        120
+      ]
+    },
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "prefer-function-over-method": false,
+    "trailing-comma": false,
+    "member-ordering": false,
+    "quotemark": {
+      "options": [
+        "single",
+        "avoid-escape"
+      ]
+    },
+    "only-arrow-functions": false,
+    "no-magic-numbers": false,
+    "no-null-keyword": false,
+    "forin": false,
+    "cyclomatic-complexity": false,
+    "prefer-template": false,
+    "no-unnecessary-class": false
+  }
+}

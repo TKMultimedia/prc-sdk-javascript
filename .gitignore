@@ -1,0 +1,9 @@
+/build/*
+!/build/index.html.dist
+/node_modules/
+/.DS_Store
+/src/*.js
+/src/*.d.ts
+/src/*/*.js
+/src/*/*.d.ts
+/yarn-error.log

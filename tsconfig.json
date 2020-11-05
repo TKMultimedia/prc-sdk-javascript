@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "diagnostics": false,
+    "module": "commonjs",
+    "target": "ES2018",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "outDir": "./build/",
+    "strictNullChecks": true,
+    "strict": true,
+    "declaration": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "es5",
+      "es7",
+      "es6",
+      "scripthost",
+      "es2015.promise",
+      "es2018.promise"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "node_modules/@types"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ]
+}

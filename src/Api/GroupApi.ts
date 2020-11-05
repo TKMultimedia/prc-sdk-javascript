@@ -41,7 +41,7 @@ class GroupApi extends AbstractApi {
 
     return this.http.post(
       this.ENDPOINT,
-      { query, variables: groupData },
+      { query, variables: { groupData } },
       { transformResponse: transformSingleGroupResponse });
   }
 }

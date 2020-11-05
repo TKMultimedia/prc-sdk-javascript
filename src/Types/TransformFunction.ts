@@ -1,1 +1,1 @@
-export type TransformFunction<T, R> = (data: T) => R;
+export type TransformFunction<T> = (data: string) => T;

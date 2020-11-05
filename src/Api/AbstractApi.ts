@@ -1,6 +1,5 @@
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import Environment from '../Enum/Environment';
-import IGraphQLGeneralResponse from '../Types/IGraphQLGeneralResponse';
 import { TransformFunction } from '../Types/TransformFunction';
 // import { transformRequest, transformResponse } from '../Utility/DataTransformUtility';
 
@@ -32,7 +31,7 @@ abstract class AbstractApi {
   /**
    * @since v2.0.0
    */
-  public constructor(env: string, token?: string, transformResponse?: TransformFunction<IGraphQLGeneralResponse, {}>) {
+  public constructor(env: string, token?: string, transformResponse?: TransformFunction<{}>) {
     let baseUrl: string;
 
     switch (env) {

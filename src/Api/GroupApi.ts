@@ -7,6 +7,7 @@ import {
   groupResponseTransformer,
   transformSingleGroupResponse
 } from '../Transfomer/GroupResponseTransformer';
+import ICompactUserGroup from '../Model/ICompactUserGroup';
 
 /**
  * @since v1.0.0
@@ -15,6 +16,16 @@ import {
 
 class GroupApi extends AbstractApi {
   private readonly ENDPOINT: string = 'graphql';
+  private readonly UserGroupObject: string = `{
+    name
+    id
+    isAdmin
+    description
+    meta {
+      key
+      value
+    }
+  }`;
 
   // --------------------------------------------------------------------------------------------
   // Public methods
@@ -22,16 +33,7 @@ class GroupApi extends AbstractApi {
 
   public getAllGroups(): AxiosPromise<IUserGroup[]> {
     const query: string = `query {
-      groups {
-        name
-        id
-        isAdmin
-        description
-        meta {
-          key
-          value
-        }
-      }
+      groups ${this.UserGroupObject}
     }`;
 
     return this.http.post(this.ENDPOINT, { query }, { transformResponse: groupResponseTransformer });
@@ -39,16 +41,7 @@ class GroupApi extends AbstractApi {
 
   public getGroupById(groupId: string): AxiosPromise<IUserGroup> {
     const query: string = `query getSingleGroup($groupId: String!) {
-      group(id: $groupId) {
-        name
-        id
-        isAdmin
-        description
-        meta {
-          key
-          value
-        }
-      }
+      group(id: $groupId) ${this.UserGroupObject}
     }`;
 
     return this.http.post(
@@ -59,16 +52,7 @@ class GroupApi extends AbstractApi {
 
   public upsertGroup(groupData: IUserGroup): AxiosPromise<IUserGroup> {
     const query: string = `mutation updateGroup($groupData: UserGroupInput!) {
-      group(group: $groupData) {
-        name
-        id
-        isAdmin
-        description
-        meta {
-          key
-          value
-        }
-      }
+      group(group: $groupData) ${this.UserGroupObject}
     }`;
 
     return this.http.post(
@@ -79,22 +63,28 @@ class GroupApi extends AbstractApi {
 
   public updatePolicy(groupId: string, meta: string[]): AxiosPromise<IUserGroup> {
     const query: string = `mutation updatePolicy($groupId: String!, $meta: [String]!) {
-      updatePolicy(groupId: $groupId, meta: $meta) {
-        name
-        id
-        isAdmin
-        description
-        meta {
-          key
-          value
-        }
-      }
+      updatePolicy(groupId: $groupId, meta: $meta) ${this.UserGroupObject}
     }`;
 
     return this.http.post(
       this.ENDPOINT,
       { query, variables: { groupId, meta } },
       { transformResponse: transformSingleGroupResponse });
+  }
+
+  public getRegisterGroups(): AxiosPromise<ICompactUserGroup[]> {
+    const query: string = `query {
+      registerGroups {
+        id
+        name
+        description
+      }
+    }`;
+
+    return this.http.post(
+      this.ENDPOINT,
+      { query },
+      { transformResponse: (data: string): ICompactUserGroup[] => generalResponseTransformer(data, 'registerGroups')});
   }
 }
 

@@ -27,7 +27,10 @@ class GroupApi extends AbstractApi {
         id
         isAdmin
         description
-        meta
+        meta {
+          key
+          value
+        }
       }
     }`;
 
@@ -41,7 +44,10 @@ class GroupApi extends AbstractApi {
         id
         isAdmin
         description
-        meta
+        meta {
+          key
+          value
+        }
       }
     }`;
 
@@ -54,10 +60,14 @@ class GroupApi extends AbstractApi {
   public upsertGroup(groupData: IUserGroup): AxiosPromise<IUserGroup> {
     const query: string = `mutation updateGroup($groupData: UserGroupInput!) {
       group(group: $groupData) {
-        id,
-        description,
         name
+        id
         isAdmin
+        description
+        meta {
+          key
+          value
+        }
       }
     }`;
 

@@ -5,5 +5,5 @@ export default interface IUserGroup {
   name: string;
   description: string;
   isAdmin: boolean;
-  meta: IGroupMeta[];
+  meta?: IGroupMeta[];
 }

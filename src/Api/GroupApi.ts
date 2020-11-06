@@ -76,6 +76,26 @@ class GroupApi extends AbstractApi {
       { query, variables: { groupData } },
       { transformResponse: transformSingleGroupResponse });
   }
+
+  public updatePolicy(groupId: string, meta: string[]): AxiosPromise<IUserGroup> {
+    const query: string = `mutation updatePolicy($groupId: String!, $meta: [String]!) {
+      updatePolicy(group: $groupData, meta: $meta) {
+        name
+        id
+        isAdmin
+        description
+        meta {
+          key
+          value
+        }
+      }
+    }`;
+
+    return this.http.post(
+      this.ENDPOINT,
+      { query, variables: { groupId, meta } },
+      { transformResponse: transformSingleGroupResponse });
+  }
 }
 
 export default GroupApi;

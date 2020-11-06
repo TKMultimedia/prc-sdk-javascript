@@ -79,7 +79,7 @@ class GroupApi extends AbstractApi {
 
   public updatePolicy(groupId: string, meta: string[]): AxiosPromise<IUserGroup> {
     const query: string = `mutation updatePolicy($groupId: String!, $meta: [String]!) {
-      updatePolicy(group: $groupData, meta: $meta) {
+      updatePolicy(group: $groupId, meta: $meta) {
         name
         id
         isAdmin

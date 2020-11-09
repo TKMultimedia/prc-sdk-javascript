@@ -58,7 +58,7 @@ abstract class AbstractApi {
     if (typeof token !== 'undefined') {
       headers = {
         ...headers,
-        token,
+        token: `Bearer ${token}`,
       };
     }
 

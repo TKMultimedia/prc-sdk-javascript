@@ -1,9 +1,12 @@
 import AbstractApi from './AbstractApi';
-import { AxiosPromise } from 'axios';
-import { get as _get } from 'lodash';
+import { AxiosPromise, AxiosResponse } from 'axios';
+import { get as _get, isEmpty as _isEmpty } from 'lodash';
 import IAuth from '../Model/IAuth';
 import IUserRegistrationRequest from '../RequestModel/IUserRegistrationRequest';
 import AuthProvider from '../Enum/AuthProvider';
+import IGraphQLGeneralResponse from '../ResponseModel/IGraphqlGeneralResponse';
+import { wrapAxiosResponse } from '../Utility/DataTransformUtility';
+import TokenType from '../Enum/TokenType';
 
 /**
  * @since v1.0.0
@@ -25,14 +28,14 @@ class AuthApi extends AbstractApi {
     return this.http.post('rest/login', { email, password });
   }
 
-  public createAppUser(
+  public async createAppUser(
     email: string,
     password: string,
     firstName: string,
     lastName: string,
     groupId: string,
     registrationNumber?: string
-  ): AxiosPromise<IAuth> {
+  ): Promise<AxiosResponse<IAuth>> {
     const query: string = `mutation createUser($userData: UserInput!){
       createNewUser(userData: $userData) ${this.authResponseObject}
     }`;
@@ -53,10 +56,16 @@ class AuthApi extends AbstractApi {
       };
     }
 
-    return this.http.post('graphql', {
+    const dataResponse: AxiosResponse<IGraphQLGeneralResponse> = await this.http.post('graphql', {
       query,
       variables: { userData }
     });
+
+    if (_isEmpty(dataResponse.data.errors) === true) {
+      return wrapAxiosResponse<IAuth>(_get(dataResponse.data.data, 'createNewUser', {}));
+    }
+
+    throw Error(_get(dataResponse, 'errors[0].message', 'Request error!'));
   }
 }
 

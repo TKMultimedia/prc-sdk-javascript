@@ -51,14 +51,14 @@ abstract class AbstractApi {
         throw new Error(`Invalid env "${env}" value`);
     }
 
-    let headers: { locale: string; token?: string } = {
+    let headers: { locale: string; authorization?: string } = {
       locale: 'en'
     };
 
     if (typeof token !== 'undefined') {
       headers = {
         ...headers,
-        token: `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       };
     }
 

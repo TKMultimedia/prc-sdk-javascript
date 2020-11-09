@@ -16,7 +16,7 @@ import ICompactUserGroup from '../Model/ICompactUserGroup';
 
 class GroupApi extends AbstractApi {
   private readonly ENDPOINT: string = 'graphql';
-  private readonly UserGroupObject: string = `{
+  private readonly userGroupObject: string = `{
     name
     id
     isAdmin
@@ -33,7 +33,7 @@ class GroupApi extends AbstractApi {
 
   public getAllGroups(): AxiosPromise<IUserGroup[]> {
     const query: string = `query {
-      groups ${this.UserGroupObject}
+      groups ${this.userGroupObject}
     }`;
 
     return this.http.post(this.ENDPOINT, { query }, { transformResponse: groupResponseTransformer });
@@ -41,7 +41,7 @@ class GroupApi extends AbstractApi {
 
   public getGroupById(groupId: string): AxiosPromise<IUserGroup> {
     const query: string = `query getSingleGroup($groupId: String!) {
-      group(id: $groupId) ${this.UserGroupObject}
+      group(id: $groupId) ${this.userGroupObject}
     }`;
 
     return this.http.post(
@@ -52,7 +52,7 @@ class GroupApi extends AbstractApi {
 
   public upsertGroup(groupData: IUserGroup): AxiosPromise<IUserGroup> {
     const query: string = `mutation updateGroup($groupData: UserGroupInput!) {
-      group(group: $groupData) ${this.UserGroupObject}
+      group(group: $groupData) ${this.userGroupObject}
     }`;
 
     return this.http.post(
@@ -63,7 +63,7 @@ class GroupApi extends AbstractApi {
 
   public updatePolicy(groupId: string, meta: string[]): AxiosPromise<IUserGroup> {
     const query: string = `mutation updatePolicy($groupId: String!, $meta: [String]!) {
-      updatePolicy(groupId: $groupId, meta: $meta) ${this.UserGroupObject}
+      updatePolicy(groupId: $groupId, meta: $meta) ${this.userGroupObject}
     }`;
 
     return this.http.post(

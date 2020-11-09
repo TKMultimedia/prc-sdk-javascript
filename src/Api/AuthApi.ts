@@ -6,7 +6,6 @@ import IUserRegistrationRequest from '../RequestModel/IUserRegistrationRequest';
 import AuthProvider from '../Enum/AuthProvider';
 import IGraphQLGeneralResponse from '../ResponseModel/IGraphqlGeneralResponse';
 import { wrapAxiosResponse } from '../Utility/DataTransformUtility';
-import TokenType from '../Enum/TokenType';
 
 /**
  * @since v1.0.0

@@ -8,5 +8,5 @@ export default interface IUserRegistrationRequest {
   lastName: string;
   email: string;
   registrationNumber?: string; // For player only
-  provider: AuthProvider;
+  provider?: AuthProvider;
 }

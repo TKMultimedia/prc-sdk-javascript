@@ -8,7 +8,7 @@ import IGraphQLGeneralResponse from '../ResponseModel/IGraphqlGeneralResponse';
 import { wrapAxiosResponse } from '../Utility/DataTransformUtility';
 import IListUserResponse from '../ResponseModel/IListUserResponse';
 import IListUserVariableRequest from '../RequestModel/IListUserVariableRequest';
-import { awesomeTransfomer } from '../Transfomer/GroupResponseTransformer';
+import { awesomeTransfomer, generalResponseTransformer } from '../Transfomer/GroupResponseTransformer';
 
 /**
  * @since v1.0.0
@@ -38,8 +38,8 @@ class AuthApi extends AbstractApi {
     groupId: string,
     registrationNumber?: string
   ): Promise<AxiosResponse<IAuth>> {
-    const query: string = `mutation createUser($userData: UserInput!){
-      createNewUser(userData: $userData) ${this.authResponseObject}
+    const query: string = `mutation ($userData: UserInput!){
+      user(userData: $userData) ${this.authResponseObject}
     }`;
 
     let userData: IUserRegistrationRequest = {
@@ -70,6 +70,19 @@ class AuthApi extends AbstractApi {
     throw Error(_get(dataResponse, 'errors[0].message', 'Request error!'));
   }
 
+  public updateUser(userData: IUserRegistrationRequest): AxiosPromise<IAuth> {
+    const query: string = `mutation ($userData: UserInput!){
+      user(userData: $userData) ${this.authResponseObject}
+    }`;
+
+    return this.http.post('graphql', {
+      query,
+      variables: { userData }
+    }, {
+      transformResponse: (data: string): IAuth => generalResponseTransformer(data, 'user')
+    });
+  }
+
   public listUsers(size: number, startUserId?: string): AxiosPromise<IListUserResponse> {
     let requestVariables: IListUserVariableRequest = {
       size
@@ -92,6 +105,8 @@ class AuthApi extends AbstractApi {
         firstName
         lastName
         email
+        registrationNumber
+        provider
       }
       totalUsers
     }`;

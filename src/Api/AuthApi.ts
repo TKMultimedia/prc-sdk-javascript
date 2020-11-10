@@ -6,6 +6,9 @@ import IUserRegistrationRequest from '../RequestModel/IUserRegistrationRequest';
 import AuthProvider from '../Enum/AuthProvider';
 import IGraphQLGeneralResponse from '../ResponseModel/IGraphqlGeneralResponse';
 import { wrapAxiosResponse } from '../Utility/DataTransformUtility';
+import IListUserResponse from '../ResponseModel/IListUserResponse';
+import IListUserVariableRequest from '../RequestModel/IListUserVariableRequest';
+import { awesomeTransfomer } from '../Transfomer/GroupResponseTransformer';
 
 /**
  * @since v1.0.0
@@ -65,6 +68,44 @@ class AuthApi extends AbstractApi {
     }
 
     throw Error(_get(dataResponse, 'errors[0].message', 'Request error!'));
+  }
+
+  public listUsers(size: number, startUserId?: string): AxiosPromise<IListUserResponse> {
+    let requestVariables: IListUserVariableRequest = {
+      size
+    };
+
+    if (typeof startUserId !== 'undefined') {
+      requestVariables = {
+        ...requestVariables,
+        startUserId
+      };
+    }
+
+    const query: string = `query ($size: Int, $startUserId: String) {
+      users(size: $size, startUserId: $startUserId) {
+        userId
+        userGroup {
+          name
+          id
+        }
+        firstName
+        lastName
+        email
+      }
+      totalUsers
+    }`;
+
+    return this.http.post(
+      'graphql',
+      {
+        query,
+        variables: requestVariables
+      },
+      {
+        transformResponse: awesomeTransfomer
+      }
+    );
   }
 }
 

@@ -19,7 +19,7 @@ abstract class AbstractApi {
   // Private Properties
   // --------------------------------------------------------------------------------------------
 
-  private readonly ENDPOINT_DEV: string = 'http://13.251.129.57:8080';
+  private readonly ENDPOINT_DEV: string = 'https://c9ec9cr93f.execute-api.us-east-1.amazonaws.com/dev';
   private readonly ENDPOINT_STAGING: string = 'https://cors-anywhere.herokuapp.com/http://13.251.129.57:8080';
   private readonly ENDPOINT_LIVE: string = 'https://cors-anywhere.herokuapp.com/http://13.251.129.57:8080';
   private readonly ENDPOINT_LOCAL: string = 'http://localhost:3002';

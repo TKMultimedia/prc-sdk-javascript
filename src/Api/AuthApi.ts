@@ -107,6 +107,13 @@ class AuthApi extends AbstractApi {
         email
         registrationNumber
         provider
+        loginTracks {
+          time
+          userAgent
+          ipLocation {
+            city
+          }
+        }
       }
       totalUsers
     }`;

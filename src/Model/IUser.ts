@@ -1,3 +1,4 @@
+import ILoginTrack from './ILoginTrack';
 import IUserGroup from './IUserGroup';
 
 export default interface IUser {
@@ -8,4 +9,5 @@ export default interface IUser {
   userGroup: IUserGroup;
   registrationNumber: string;
   provider: string;
+  loginTracks: ILoginTrack[];
 }

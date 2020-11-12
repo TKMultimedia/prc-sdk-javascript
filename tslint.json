@@ -9,7 +9,6 @@
   },
   "rules": {
     "ban-ts-ignore": false,
-    // temporary, until we fixed the scss schema late build
     "completed-docs": false,
     "comment-format": [true, "check-space"],
     "file-name-casing": [
@@ -19,12 +18,12 @@
     "deprecation": {
       "severity": "warning"
     },
+    "no-any": false,
     "no-boolean-literal-compare": false,
     "no-inferred-empty-object-type": false,
     "no-inferrable-types": false,
     "no-default-export": false,
     "no-default-import": false,
-    // TODO: temporary until we fix build issue. e.g: https://pipelines.puppet.com/vroomsysadmin/builds/506160
     "no-unsafe-any": false,
     "no-submodule-imports": false,
     "no-use-before-declare": false,

@@ -75,12 +75,16 @@ class AuthApi extends AbstractApi {
       user(userData: $userData) ${this.authResponseObject}
     }`;
 
-    return this.http.post('graphql', {
-      query,
-      variables: { userData }
-    }, {
-      transformResponse: (data: string): IAuth => generalResponseTransformer(data, 'user')
-    });
+    return this.http.post(
+      'graphql',
+      {
+        query,
+        variables: { userData }
+      },
+      {
+        transformResponse: (data: string): IAuth => generalResponseTransformer(data, 'user')
+      }
+    );
   }
 
   public listUsers(size: number, startUserId?: string): AxiosPromise<IListUserResponse> {

@@ -23,6 +23,7 @@ class SubscriptionApi extends AbstractApi {
     promotionPrice
     promotionText
     features
+    description
     userGroup {
       name
       id

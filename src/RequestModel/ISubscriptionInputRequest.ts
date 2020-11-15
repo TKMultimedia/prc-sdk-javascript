@@ -10,4 +10,5 @@ export default interface ISubscriptionInputRequest {
   features?: string[];
   groupId?: string;
   type?: SubscriptionType;
+  stripeId?: string;
 }

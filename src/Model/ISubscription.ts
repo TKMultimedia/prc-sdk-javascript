@@ -1,6 +1,7 @@
 import SubscriptionType from '../Enum/SubscriptionType';
 import IUser from './IUser';
 import IUserGroup from './IUserGroup';
+import IStripeProduct from './Stripe/IStripeProduct';
 
 export default interface ISubscription {
   id: string;
@@ -16,4 +17,6 @@ export default interface ISubscription {
   promotionText: string;
   features: string[];
   type: SubscriptionType;
+  stripeId: string;
+  stripeProduct: IStripeProduct;
 }

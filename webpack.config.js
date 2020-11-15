@@ -20,8 +20,8 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'build/'),
-        filename: 'automoto-sdk.js',
-        library: 'AutomotoSdk',
+        filename: 'prc-sdk.js',
+        library: 'prcSdk',
         libraryTarget: 'umd'
     },
     plugins: [

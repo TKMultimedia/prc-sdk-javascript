@@ -16,6 +16,21 @@ class SubscriptionApi extends AbstractApi {
   // Public methods
   // --------------------------------------------------------------------------------------------
 
+  private readonly stripeProductFields: string = `{
+    id
+    object
+    active
+    attributes
+    created
+    description
+    images
+    livemode
+    name
+    type
+    unit_label
+    updated
+  }`;
+
   private readonly subscriptionFields: string = `{
     name
     id
@@ -42,22 +57,7 @@ class SubscriptionApi extends AbstractApi {
       firstName
     }
     stripeId
-    stripeProduct
-  }`;
-
-  private readonly stripeProductFields: string = `{
-    id
-    object
-    active
-    attributes
-    created
-    description
-    images
-    livemode
-    name
-    type
-    unit_label
-    updated
+    stripeProduct ${this.stripeProductFields}
   }`;
 
   public getSubscriptionsList(): AxiosPromise<ISubscription[]> {

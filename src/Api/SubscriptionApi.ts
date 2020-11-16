@@ -41,6 +41,8 @@ class SubscriptionApi extends AbstractApi {
       lastName
       firstName
     }
+    stripeId
+    stripeProduct
   }`;
 
   private readonly stripeProductFields: string = `{

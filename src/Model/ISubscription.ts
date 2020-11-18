@@ -19,4 +19,5 @@ export default interface ISubscription {
   type: SubscriptionType;
   stripeId: string;
   stripeProduct: IStripeProduct;
+  disabled: boolean;
 }

@@ -57,6 +57,7 @@ class SubscriptionApi extends AbstractApi {
       firstName
     }
     stripeId
+    disabled
     stripeProduct ${this.stripeProductFields}
   }`;
 

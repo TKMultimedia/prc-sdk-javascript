@@ -11,4 +11,5 @@ export default interface ISubscriptionInputRequest {
   groupId?: string;
   type?: SubscriptionType;
   stripeId?: string;
+  disabled?: boolean;
 }

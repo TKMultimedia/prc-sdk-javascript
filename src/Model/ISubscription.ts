@@ -13,6 +13,7 @@ export default interface ISubscription {
   createdTime: number;
   latestUpdated: number;
   price: number;
+  priceId: string;
   promotionPrice: number;
   promotionText: string;
   features: string[];

@@ -1,4 +1,5 @@
 import ILoginTrack from './ILoginTrack';
+import IPlayerMeta from './IPlayerMeta';
 import IUserGroup from './IUserGroup';
 
 export default interface IUser {
@@ -10,4 +11,6 @@ export default interface IUser {
   registrationNumber: string;
   provider: string;
   loginTracks: ILoginTrack[];
+  playerMeta: IPlayerMeta;
+  createdAt: number;
 }

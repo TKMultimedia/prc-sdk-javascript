@@ -27,7 +27,28 @@ class AuthApi extends AbstractApi {
   }`;
 
   public login(email: string, password: string): AxiosPromise<IAuth> {
-    return this.http.post('rest/login', { email, password });
+    const query: string = `query ($email: String!, $password: String!) {
+      userLogin(email: $email, password: $password) {
+        accessToken
+        refreshToken
+        resetPassword
+        tokenType
+      }
+    }`;
+
+    return this.http.post(
+      'graphql',
+      {
+        query,
+        variables: {
+          email,
+          password
+         }
+      },
+      {
+        transformResponse: (data: string): IAuth => generalResponseTransformer(data, 'userLogin')
+      }
+    );
   }
 
   public async createAppUser(

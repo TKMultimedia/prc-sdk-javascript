@@ -7,7 +7,7 @@ export default interface IChatMessage {
   deleted: boolean;
   conversationId: string;
   messageBody: string;
-  createdAt: string;
+  createdAt: number;
   sender: IUser;
   receiver: IUser;
   read?: boolean;

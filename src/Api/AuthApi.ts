@@ -51,6 +51,30 @@ class AuthApi extends AbstractApi {
     );
   }
 
+  public refreshToken(refreshToken: string): AxiosPromise<IAuth> {
+    const query: string = `query ($refreshToken: String!) {
+      userRefreshToken(refreshToken: $refreshToken) {
+        accessToken
+        refreshToken
+        resetPassword
+        tokenType
+      }
+    }`;
+
+    return this.http.post(
+      'graphql',
+      {
+        query,
+        variables: {
+          refreshToken
+        }
+      },
+      {
+        transformResponse: (data: string): IAuth => generalResponseTransformer(data, 'userRefreshToken')
+      }
+    );
+  }
+
   public async createAppUser(
     email: string,
     password: string,

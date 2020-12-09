@@ -46,4 +46,5 @@ export default interface IElitePlayer {
   secondaryNationality: IEliteNationality;
   detailedPosition: string[];
   internalUser: IUser;
+  userData: IElitePlayer;
 }

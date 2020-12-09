@@ -1,4 +1,5 @@
 import IEliteLinks from './IEliteLinks';
+import IEliteNationality from './IEliteNationality';
 import IElitePlayer from './IElitePlayer';
 
 export default interface IEliteTeam {
@@ -21,4 +22,6 @@ export default interface IEliteTeam {
   _links: string[];
   links: IEliteLinks;
   players: IElitePlayer[];
+  country: IEliteNationality;
+  teamData: IEliteTeam;
 }

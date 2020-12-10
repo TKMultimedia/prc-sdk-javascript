@@ -1,3 +1,5 @@
+import ISubscription from '../ISubscription';
+
 export default interface IStripeProduct {
   id: string;
   object: string;
@@ -11,4 +13,5 @@ export default interface IStripeProduct {
   statement_descriptor: string;
   unit_label: string;
   updated: number;
+  subscriptionData: ISubscription;
 }

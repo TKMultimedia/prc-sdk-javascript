@@ -8,5 +8,5 @@ export default interface IUserProfile {
   profilePicture: string;
   ratingCount: number;
   follower: IProfileFollowUser;
-  following: IProfileFollowUser
+  following: IProfileFollowUser;
 }

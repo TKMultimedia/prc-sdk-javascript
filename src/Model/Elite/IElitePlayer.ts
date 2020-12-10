@@ -1,4 +1,5 @@
 import IUser from '../IUser';
+import IUserProfile from '../IUserProfile';
 import IEliteAgencies from './IEliteAgencies';
 import IEliteLatestStats from './IEliteLatestStats';
 import IEliteLinks from './IEliteLinks';
@@ -47,4 +48,5 @@ export default interface IElitePlayer {
   detailedPosition: string[];
   internalUser: IUser;
   userData: IElitePlayer;
+  profile: IUserProfile;
 }

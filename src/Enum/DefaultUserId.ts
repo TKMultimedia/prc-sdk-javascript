@@ -1,5 +1,5 @@
 enum DefaultUser {
-  DefaultUserIndex = 'default-user-index',
+  DefaultUserIndex = 'default_userid_index',
 }
 
 export default DefaultUser;

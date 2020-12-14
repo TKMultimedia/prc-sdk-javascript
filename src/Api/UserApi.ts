@@ -52,6 +52,7 @@ class UserApi extends AbstractApi {
     const query: string = `query {
       my {
         savedList {
+          players
           playerData {
             internalPlayers {
               userId
@@ -175,7 +176,7 @@ class UserApi extends AbstractApi {
         query
       },
       {
-        transformResponse: (data: string): IListSavePlayerResponse => generalResponseTransformer(data, 'my.savedList.playerData')
+        transformResponse: (data: string): IListSavePlayerResponse => generalResponseTransformer(data, 'my.savedList')
       }
     );
   }

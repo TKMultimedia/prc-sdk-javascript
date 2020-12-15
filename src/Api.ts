@@ -6,6 +6,7 @@ import SubscriptionApi from './Api/SubscriptionApi';
 import CustomGraphQLApi from './Api/CustomGraphQLApi';
 import UserApi from './Api/UserApi';
 import PlayerApi from './Api/PlayerApi';
+import TeamApi from './Api/TeamApi';
 
 export {
   GroupApi as Group,
@@ -15,5 +16,6 @@ export {
   CustomGraphQLApi as CustomGraphQL,
   UserApi as User,
   PlayerApi as Player,
+  TeamApi as Team,
   Environment
 };

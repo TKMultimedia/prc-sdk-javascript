@@ -4,6 +4,7 @@ import { get as _get, isEmpty as _isEmpty } from 'lodash';
 import { generalResponseTransformer } from '../Transfomer/GroupResponseTransformer';
 import IEliteTeam from '../Model/Elite/IEliteTeam';
 import IListSavePlayerResponse from '../ResponseModel/IListSavePlayerResponse';
+import QueryFields from '../Enum/QueryFields';
 
 /**
  * @since v1.0.0
@@ -19,20 +20,7 @@ class UserApi extends AbstractApi {
     const query: string = `query {
       my {
         savedList {
-          teamData {
-            id
-            name
-            fullName
-            logoUrl
-            city
-            country {
-              name
-              flagUrl {
-                medium
-                small
-              }
-            }
-          }
+          teamData ${QueryFields.TeamFields}
         }
       }
     }`;
@@ -54,117 +42,8 @@ class UserApi extends AbstractApi {
         savedList {
           players
           playerData {
-            internalPlayers {
-              userId
-              lastName
-              firstName
-              createdAt
-              playerMeta {
-                  playerId
-                  verified
-                  elitePlayer {
-                    imageUrl
-                    dateOfBirth
-                    placeOfBirth
-                    nationality {
-                      name
-                      flagUrl {
-                        small
-                        medium
-                      }
-                    }
-                    height {
-                      imperial
-                    }
-                    weight {
-                      imperial
-                    }
-                    position
-                    latestStats {
-                      team {
-                        teamData {
-                          name
-                          logoUrl
-                        }
-                      }
-                      jerseyNumber
-                    }
-                  }
-              }
-              profile {
-                ratingPoint
-                id
-                profilePicture
-                follower {
-                  count
-                }
-                following {
-                  count
-                }
-                playerId
-                userId
-              }
-              userPayment {
-                subscriptions {
-                  items {
-                    data {
-                      price {
-                        productData {
-                          subscriptionData {
-                            name
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            elitePlayers {
-              id
-              name
-              userData {
-                imageUrl
-                dateOfBirth
-                placeOfBirth
-                nationality {
-                  name
-                  flagUrl {
-                    small
-                    medium
-                  }
-                }
-                height {
-                  imperial
-                }
-                weight {
-                  imperial
-                }
-                position
-                latestStats {
-                  team {
-                    teamData {
-                      name
-                      logoUrl
-                    }
-                  }
-                  jerseyNumber
-                }
-              }
-              profile {
-                ratingPoint
-                id
-                profilePicture
-                follower {
-                  count
-                }
-                following {
-                  count
-                }
-                playerId
-                userId
-              }
-            }
+            internalPlayers ${QueryFields.UserFields}
+            elitePlayers ${QueryFields.ElitePlayerFields}
           }
         }
       }

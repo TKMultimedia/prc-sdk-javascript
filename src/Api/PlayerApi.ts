@@ -4,6 +4,7 @@ import { get as _get } from 'lodash';
 import { generalResponseTransformer } from '../Transfomer/GroupResponseTransformer';
 import IElitePlayer from '../Model/Elite/IElitePlayer';
 import IUser from '../Model/IUser';
+import QueryFields from '../Enum/QueryFields';
 
 /**
  * @since v1.0.0
@@ -17,72 +18,7 @@ class PlayerApi extends AbstractApi {
 
   public getInternalPlayerById(userId: string): AxiosPromise<IUser> {
     const query: string = `query ($userId: String!) {
-      getUserById(userId: $userId) {
-        userId
-        lastName
-        firstName
-        createdAt
-        playerMeta {
-            playerId
-            verified
-            elitePlayer {
-              imageUrl
-              dateOfBirth
-              placeOfBirth
-              nationality {
-                name
-                flagUrl {
-                  small
-                  medium
-                }
-              }
-              height {
-                imperial
-              }
-              weight {
-                imperial
-              }
-              position
-              latestStats {
-                team {
-                  teamData {
-                    name
-                    logoUrl
-                  }
-                }
-                jerseyNumber
-              }
-            }
-        }
-        profile {
-          ratingPoint
-          id
-          profilePicture
-          follower {
-            count
-          }
-          following {
-            count
-          }
-          playerId
-          userId
-        }
-        userPayment {
-          subscriptions {
-            items {
-              data {
-                price {
-                  productData {
-                    subscriptionData {
-                      name
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      getUserById(userId: $userId) ${QueryFields.UserFields}
     }`;
 
     return this.http.post(
@@ -101,51 +37,7 @@ class PlayerApi extends AbstractApi {
 
   public getElitePlayerById(playerId: number): AxiosPromise<IElitePlayer> {
     const query: string = `query ($playerId: Float!) {
-      getElitePlayerById(playerId: $playerId) {
-        id
-        name
-        userData {
-          imageUrl
-          dateOfBirth
-          placeOfBirth
-          nationality {
-            name
-            flagUrl {
-              small
-              medium
-            }
-          }
-          height {
-            imperial
-          }
-          weight {
-            imperial
-          }
-          position
-          latestStats {
-            team {
-              teamData {
-                name
-                logoUrl
-              }
-            }
-            jerseyNumber
-          }
-        }
-        profile {
-          ratingPoint
-          id
-          profilePicture
-          follower {
-            count
-          }
-          following {
-            count
-          }
-          playerId
-          userId
-        }
-      }
+      getElitePlayerById(playerId: $playerId) ${QueryFields.ElitePlayerFields}
     }`;
 
     return this.http.post(

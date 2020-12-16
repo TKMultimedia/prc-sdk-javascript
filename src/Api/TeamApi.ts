@@ -3,6 +3,7 @@ import { AxiosPromise } from 'axios';
 import { get as _get } from 'lodash';
 import { generalResponseTransformer } from '../Transfomer/GroupResponseTransformer';
 import IElitePlayer from '../Model/Elite/IElitePlayer';
+import QueryFields from '../Enum/QueryFields';
 
 /**
  * @since v1.0.0
@@ -16,20 +17,7 @@ class TeamApi extends AbstractApi {
 
   public getEliteTeamById(teamId: number): AxiosPromise<IElitePlayer> {
     const query: string = `query ($teamId: Float!) {
-      getEliteTeamById(teamId: $teamId) {
-        id
-        name
-        fullName
-        logoUrl
-        city
-        country {
-          name
-          flagUrl {
-            medium
-            small
-          }
-        }
-      }
+      getEliteTeamById(teamId: $teamId) ${QueryFields.TeamFields}
     }`;
 
     return this.http.post(

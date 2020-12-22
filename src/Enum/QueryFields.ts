@@ -2,39 +2,48 @@ enum QueryFields {
   UserFields = `{
     userId
     lastName
+    email
     firstName
     createdAt
+    userGroup {
+      groupId
+      name
+      meta {
+        value
+        key
+      }
+    }
     playerMeta {
-        playerId
-        verified
-        elitePlayer {
-          imageUrl
-          dateOfBirth
-          placeOfBirth
-          nationality {
-            name
-            flagUrl {
-              small
-              medium
-            }
-          }
-          height {
-            imperial
-          }
-          weight {
-            imperial
-          }
-          position
-          latestStats {
-            team {
-              teamData {
-                name
-                logoUrl
-              }
-            }
-            jerseyNumber
+      playerId
+      verified
+      elitePlayer {
+        imageUrl
+        dateOfBirth
+        placeOfBirth
+        nationality {
+          name
+          flagUrl {
+            small
+            medium
           }
         }
+        height {
+          imperial
+        }
+        weight {
+          imperial
+        }
+        position
+        latestStats {
+          team {
+            teamData {
+              name
+              logoUrl
+            }
+          }
+          jerseyNumber
+        }
+      }
     }
     profile {
       ratingPoint
@@ -57,7 +66,9 @@ enum QueryFields {
             price {
               productData {
                 subscriptionData {
+                  id
                   name
+                  features
                 }
               }
             }

@@ -17,7 +17,7 @@ class TeamApi extends AbstractApi {
 
   public getEliteTeamById(teamId: number): AxiosPromise<IElitePlayer> {
     const query: string = `query ($teamId: Float!) {
-      getEliteTeamById(teamId: $teamId) ${QueryFields.TeamFields}
+      getEliteTeamById(teamId: $teamId) ${QueryFields.teamFields}
     }`;
 
     return this.http.post(

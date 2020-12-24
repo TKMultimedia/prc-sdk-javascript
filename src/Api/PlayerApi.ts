@@ -18,7 +18,7 @@ class PlayerApi extends AbstractApi {
 
   public getInternalPlayerById(userId: string): AxiosPromise<IUser> {
     const query: string = `query ($userId: String!) {
-      getUserById(userId: $userId) ${QueryFields.UserFields}
+      getUserById(userId: $userId) ${QueryFields.userFields}
     }`;
 
     return this.http.post(
@@ -37,7 +37,7 @@ class PlayerApi extends AbstractApi {
 
   public getElitePlayerById(playerId: number): AxiosPromise<IElitePlayer> {
     const query: string = `query ($playerId: Float!) {
-      getElitePlayerById(playerId: $playerId) ${QueryFields.ElitePlayerFields}
+      getElitePlayerById(playerId: $playerId) ${QueryFields.elitePlayerFields}
     }`;
 
     return this.http.post(

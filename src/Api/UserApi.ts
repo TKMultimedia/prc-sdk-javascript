@@ -20,7 +20,7 @@ class UserApi extends AbstractApi {
     const query: string = `query {
       my {
         savedList {
-          teamData ${QueryFields.TeamFields}
+          teamData ${QueryFields.teamFields}
         }
       }
     }`;
@@ -42,8 +42,8 @@ class UserApi extends AbstractApi {
         savedList {
           players
           playerData {
-            internalPlayers ${QueryFields.UserFields}
-            elitePlayers ${QueryFields.ElitePlayerFields}
+            internalPlayers ${QueryFields.userFields}
+            elitePlayers ${QueryFields.elitePlayerFields}
           }
         }
       }

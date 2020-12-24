@@ -1,86 +1,36 @@
-enum QueryFields {
-  UserFields = `{
-    userId
-    lastName
-    email
-    firstName
-    createdAt
-    userGroup {
-      groupId
-      name
-      meta {
-        value
-        key
-      }
-    }
-    playerMeta {
-      playerId
-      verified
-      elitePlayer {
-        imageUrl
-        dateOfBirth
-        placeOfBirth
-        nationality {
-          name
-          flagUrl {
-            small
-            medium
-          }
-        }
-        height {
-          imperial
-        }
-        weight {
-          imperial
-        }
-        position
-        latestStats {
-          team {
-            teamData {
-              name
-              logoUrl
-            }
-          }
-          jerseyNumber
-        }
-      }
-    }
-    profile {
-      ratingPoint
-      id
-      follower {
-        count
-      }
-      following {
-        count
-      }
-      playerId
-      userId
-    }
-    profilePicture
-    phoneNumber
-    userPayment {
-      subscriptions {
-        items {
-          data {
-            price {
-              productData {
-                subscriptionData {
-                  id
-                  name
-                  features
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }`,
-  ElitePlayerFields = `{
-    id
+const profileFields: string = `{
+  ratingPoint
+  id
+  follower {
+    count
+    list
+  }
+  following {
+    count
+    list
+  }
+  playerId
+  userId
+}`;
+
+const userFields: string = `{
+  userId
+  lastName
+  email
+  firstName
+  createdAt
+  userGroup {
+    groupId
     name
-    userData {
+    meta {
+      value
+      key
+    }
+  }
+  playerMeta {
+    playerId
+    verified
+    elitePlayer {
       imageUrl
       dateOfBirth
       placeOfBirth
@@ -108,34 +58,81 @@ enum QueryFields {
         jerseyNumber
       }
     }
-    profile {
-      ratingPoint
-      id
-      profilePicture
-      follower {
-        count
+  }
+  profile ${profileFields}
+  profilePicture
+  phoneNumber
+  userPayment {
+    subscriptions {
+      items {
+        data {
+          price {
+            productData {
+              subscriptionData {
+                id
+                name
+                features
+              }
+            }
+          }
+        }
       }
-      following {
-        count
-      }
-      playerId
-      userId
     }
-  }`,
-  TeamFields = `{
-    id
-    name
-    fullName
-    logoUrl
-    city
-    country {
+  }
+}`;
+
+const elitePlayerFields: string = `{
+  id
+  name
+  userData {
+    imageUrl
+    dateOfBirth
+    placeOfBirth
+    nationality {
       name
       flagUrl {
-        medium
         small
+        medium
       }
     }
-  }`
-}
+    height {
+      imperial
+    }
+    weight {
+      imperial
+    }
+    position
+    latestStats {
+      team {
+        teamData {
+          name
+          logoUrl
+        }
+      }
+      jerseyNumber
+    }
+  }
+  profile ${profileFields}
+}`;
 
-export default QueryFields;
+const teamFields: string = `{
+  id
+  name
+  fullName
+  logoUrl
+  city
+  country {
+    name
+    flagUrl {
+      medium
+      small
+    }
+  }
+}`;
+
+export default {
+  teamFields,
+  profileFields,
+  userFields,
+  elitePlayerFields
+};

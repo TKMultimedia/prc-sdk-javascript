@@ -29,7 +29,7 @@ class TeamApi extends AbstractApi {
         }
       },
       {
-        transformResponse: (data: string): IElitePlayer => generalResponseTransformer(data, 'my.getEliteTeamById')
+        transformResponse: (data: string): IElitePlayer => generalResponseTransformer(data, 'getEliteTeamById')
       }
     );
   }

@@ -30,7 +30,7 @@ class PlayerApi extends AbstractApi {
         }
       },
       {
-        transformResponse: (data: string): IUser => generalResponseTransformer(data, 'my.getUserById')
+        transformResponse: (data: string): IUser => generalResponseTransformer(data, 'getUserById')
       }
     );
   }
@@ -49,7 +49,7 @@ class PlayerApi extends AbstractApi {
         }
       },
       {
-        transformResponse: (data: string): IElitePlayer => generalResponseTransformer(data, 'my.getElitePlayerById')
+        transformResponse: (data: string): IElitePlayer => generalResponseTransformer(data, 'getElitePlayerById')
       }
     );
   }

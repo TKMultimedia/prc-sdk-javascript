@@ -13,6 +13,13 @@ const profileFields: string = `{
   userId
 }`;
 
+const reportCompactFields: string = `{
+  id
+  skills {
+    total
+  }
+}`;
+
 const userFields: string = `{
   userId
   lastName
@@ -27,6 +34,7 @@ const userFields: string = `{
       key
     }
   }
+  reports ${reportCompactFields}
   playerMeta {
     playerId
     verified

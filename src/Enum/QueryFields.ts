@@ -15,9 +15,57 @@ const profileFields: string = `{
 
 const reportCompactFields: string = `{
   id
+  scoutDate
   skills {
     total
   }
+}`;
+
+const userCompactFields: string = `{
+  userId
+  lastName
+  firstName
+  playerMeta {
+    playerId
+    verified
+    elitePlayer {
+      imageUrl
+      latestStats {
+        team {
+          teamData {
+            name
+            logoUrl
+          }
+        }
+      }
+    }
+  }
+  profilePicture
+  userPayment {
+    subscriptions {
+      items {
+        data {
+          price {
+            productData {
+              subscriptionData {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`;
+
+const reportListFields: string = `{
+  id
+  scoutDate
+  skills {
+    total
+  }
+  player ${userCompactFields}
 }`;
 
 const userFields: string = `{
@@ -142,5 +190,6 @@ export default {
   teamFields,
   profileFields,
   userFields,
-  elitePlayerFields
+  elitePlayerFields,
+  reportListFields
 };

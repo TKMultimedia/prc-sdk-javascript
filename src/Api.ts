@@ -7,6 +7,7 @@ import CustomGraphQLApi from './Api/CustomGraphQLApi';
 import UserApi from './Api/UserApi';
 import PlayerApi from './Api/PlayerApi';
 import TeamApi from './Api/TeamApi';
+import ReportApi from './Api/ReportApi';
 
 export {
   GroupApi as Group,
@@ -17,5 +18,6 @@ export {
   UserApi as User,
   PlayerApi as Player,
   TeamApi as Team,
+  ReportApi as Report,
   Environment
 };

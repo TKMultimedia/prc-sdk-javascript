@@ -1,5 +1,6 @@
 import ILoginTrack from './ILoginTrack';
 import IPlayerMeta from './IPlayerMeta';
+import IReport from './IReport';
 import IUserGroup from './IUserGroup';
 import IUserPayment from './IUserPayment';
 import IUserProfile from './IUserProfile';
@@ -17,4 +18,5 @@ export default interface IUser {
   createdAt: number;
   profile: IUserProfile;
   userPayment: IUserPayment;
+  reports: IReport[];
 }

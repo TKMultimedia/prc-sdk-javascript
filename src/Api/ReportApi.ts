@@ -15,7 +15,7 @@ class ReportApi extends AbstractApi {
   // Public methods
   // --------------------------------------------------------------------------------------------
 
-  public listReports(startKey?: string, limit?: string): AxiosPromise<IReport[]> {
+  public listReports(startKey?: string, limit?: number): AxiosPromise<IReport[]> {
     const query: string = `query ($startKey: String, $limit: Int){
       listReports(startKey: $startKey, limit: $limit) ${QueryFields.reportListFields}
     }`;

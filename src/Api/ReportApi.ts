@@ -4,6 +4,7 @@ import { get as _get } from 'lodash';
 import { generalResponseTransformer } from '../Transfomer/GroupResponseTransformer';
 import QueryFields from '../Enum/QueryFields';
 import IReport from '../Model/IReport';
+import ICreateReportRequest from '../RequestModel/ICreateReportRequest';
 
 /**
  * @since v1.0.0
@@ -31,6 +32,27 @@ class ReportApi extends AbstractApi {
       },
       {
         transformResponse: (data: string): IReport[] => generalResponseTransformer(data, 'listReports')
+      }
+    );
+  }
+
+  public postReport(reportData: ICreateReportRequest): AxiosPromise<IReport> {
+    const query: string = `mutation ($reportData: ReportInput!) {
+      scoutReport(reportData: $reportData) {
+        ${QueryFields.reportListFields}
+      }
+    }`;
+
+    return this.http.post(
+      'graphql',
+      {
+        query,
+        variables: {
+          reportData
+        }
+      },
+      {
+        transformResponse: (data: string): IReport => generalResponseTransformer(data, 'scoutReport')
       }
     );
   }

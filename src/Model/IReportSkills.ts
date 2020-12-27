@@ -1,4 +1,4 @@
-export default interface IReportSkills {
+export interface IReportSkillBase {
   speed: number;
   agility: number;
   puckHandling: number;
@@ -12,5 +12,7 @@ export default interface IReportSkills {
   definsive: number;
   hitting: number;
   shootingBlocking: number;
+}
+export default interface IReportSkills extends IReportSkillBase {
   total: number;
 }

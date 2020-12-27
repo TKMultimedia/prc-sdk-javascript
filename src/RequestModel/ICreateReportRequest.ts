@@ -1,4 +1,4 @@
-import IReportSkills from '../Model/IReportSkills';
+import { IReportSkillBase } from '../Model/IReportSkills';
 
 export default interface ICreateReportRequest {
   id?: string;
@@ -6,7 +6,7 @@ export default interface ICreateReportRequest {
   createdBy?: string;
   scoutDate: number;
   game: string;
-  skills: IReportSkills;
+  skills: IReportSkillBase;
   scoutComment: string;
   longRangePotential: string;
   recommendation: string;

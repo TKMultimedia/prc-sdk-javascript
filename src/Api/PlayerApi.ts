@@ -53,6 +53,25 @@ class PlayerApi extends AbstractApi {
       }
     );
   }
+
+  public searchForInternalPlayers(playerName: string, fullFields: boolean = false): AxiosPromise<IUser[]> {
+    const query: string = `query ($name: String!){
+      searchForInternalPlayers(playerName: $name) ${fullFields === true ? QueryFields.userFields : QueryFields.userLightFields}
+    }`;
+
+    return this.http.post(
+      'graphql',
+      {
+        query,
+        variables: {
+          name: playerName
+        }
+      },
+      {
+        transformResponse: (data: string): IUser[] => generalResponseTransformer(data, 'searchForInternalPlayers')
+      }
+    );
+  }
 }
 
 export default PlayerApi;

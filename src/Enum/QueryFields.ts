@@ -21,6 +21,28 @@ const reportCompactFields: string = `{
   }
 }`;
 
+const userLightFields: string = `{
+  userId
+  lastName
+  firstName
+  playerMeta {
+    playerId
+    verified
+    elitePlayer {
+      imageUrl
+      latestStats {
+        team {
+          teamData {
+            name
+            logoUrl
+          }
+        }
+      }
+    }
+  }
+  profilePicture
+}`;
+
 const userCompactFields: string = `{
   userId
   lastName
@@ -191,5 +213,6 @@ export default {
   profileFields,
   userFields,
   elitePlayerFields,
-  reportListFields
+  reportListFields,
+  userLightFields
 };

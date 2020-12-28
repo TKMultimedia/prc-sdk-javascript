@@ -88,6 +88,11 @@ const reportListFields: string = `{
     total
   }
   player ${userCompactFields}
+  creator {
+    firstName
+    lastName
+    userId
+  }
 }`;
 
 const userFields: string = `{

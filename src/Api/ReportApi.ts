@@ -38,9 +38,7 @@ class ReportApi extends AbstractApi {
 
   public postReport(reportData: ICreateReportRequest): AxiosPromise<IReport> {
     const query: string = `mutation ($reportData: ReportInput!) {
-      scoutReport(reportData: $reportData) {
-        ${QueryFields.reportListFields}
-      }
+      scoutReport(reportData: $reportData) ${QueryFields.reportListFields}
     }`;
 
     return this.http.post(

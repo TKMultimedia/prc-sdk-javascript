@@ -72,6 +72,25 @@ class PlayerApi extends AbstractApi {
       }
     );
   }
+
+  public searchForScout(scoutName: string, fullFields: boolean = false): AxiosPromise<IUser[]> {
+    const query: string = `query ($name: String!){
+      searchForScouts(scoutName: $name) ${fullFields === true ? QueryFields.userFields : QueryFields.userLightFields}
+    }`;
+
+    return this.http.post(
+      'graphql',
+      {
+        query,
+        variables: {
+          name: scoutName
+        }
+      },
+      {
+        transformResponse: (data: string): IUser[] => generalResponseTransformer(data, 'searchForScouts')
+      }
+    );
+  }
 }
 
 export default PlayerApi;

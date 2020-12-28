@@ -4,7 +4,7 @@ import { get as _get, isEmpty as _isEmpty } from 'lodash';
 import IAuth from '../Model/IAuth';
 import IUserRegistrationRequest from '../RequestModel/IUserRegistrationRequest';
 import AuthProvider from '../Enum/AuthProvider';
-import IGraphQLGeneralResponse from '../ResponseModel/IGraphqlGeneralResponse';
+import IGraphQLGeneralResponse from '../ResponseModel/IGraphQLGeneralResponse';
 import { wrapAxiosResponse } from '../Utility/DataTransformUtility';
 import IListUserResponse from '../ResponseModel/IListUserResponse';
 import IListUserVariableRequest from '../RequestModel/IListUserVariableRequest';

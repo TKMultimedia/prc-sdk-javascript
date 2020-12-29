@@ -1,6 +1,8 @@
 import IEliteLinks from './IEliteLinks';
 import IEliteNationality from './IEliteNationality';
 import IElitePlayer from './IElitePlayer';
+import { IEliteSeason } from './IEliteSeason';
+import IEliteStaff from './IEliteStaff';
 
 export default interface IEliteTeam {
   id: number;
@@ -24,4 +26,6 @@ export default interface IEliteTeam {
   players: IElitePlayer[];
   country: IEliteNationality;
   teamData: IEliteTeam;
+  staffs: IEliteStaff[];
+  seasons: IEliteSeason[];
 }

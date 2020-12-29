@@ -16,4 +16,6 @@ export default interface IEliteStaff {
   updatedAt: string;
   _links: string[];
   links: IEliteLinks;
+  role: string;
+  staffData: IEliteStaff;
 }

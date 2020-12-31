@@ -32,7 +32,7 @@ class UserApi extends AbstractApi {
         query
       },
       {
-        transformResponse: (data: string): IEliteTeam[] => generalResponseTransformer(data, 'my.savedList.reportData')
+        transformResponse: (data: string): IReport[] => generalResponseTransformer(data, 'my.savedList.reportData')
       }
     );
   }

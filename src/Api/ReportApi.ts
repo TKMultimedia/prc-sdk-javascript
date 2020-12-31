@@ -54,6 +54,25 @@ class ReportApi extends AbstractApi {
       }
     );
   }
+
+  public getReportById(reportId: string, fields: string = QueryFields.reportDetailsFields): AxiosPromise<IReport> {
+    const query: string = `query ($reportId: String!) {
+      getReport(id: $reportId) ${fields}
+    }`;
+
+    return this.http.post(
+      'graphql',
+      {
+        query,
+        variables: {
+          reportId
+        }
+      },
+      {
+        transformResponse: (data: string): IReport => generalResponseTransformer(data, 'getReport')
+      }
+    );
+  }
 }
 
 export default ReportApi;

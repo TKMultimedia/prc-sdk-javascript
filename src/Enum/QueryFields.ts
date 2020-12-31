@@ -213,11 +213,33 @@ const teamFields: string = `{
   }
 }`;
 
+const reportDetailsFields: string = `{
+  skills {
+    speed
+    agility
+    puckHandling
+    strength
+    offensive
+    leadership
+    agression
+    shooting
+    acceleration
+    shootingAccuracy
+    definsive
+    hitting
+    shootingBlocking
+  }
+  scoutComment
+  longRangePotential
+  recommendation
+}`;
+
 export default {
   teamFields,
   profileFields,
   userFields,
   elitePlayerFields,
   reportListFields,
-  userLightFields
+  userLightFields,
+  reportDetailsFields
 };

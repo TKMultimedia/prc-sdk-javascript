@@ -5,6 +5,7 @@ import { generalResponseTransformer } from '../Transfomer/GroupResponseTransform
 import IEliteTeam from '../Model/Elite/IEliteTeam';
 import IListSavePlayerResponse from '../ResponseModel/IListSavePlayerResponse';
 import QueryFields from '../Enum/QueryFields';
+import IReport from '../Model/IReport';
 
 /**
  * @since v1.0.0
@@ -15,6 +16,26 @@ class UserApi extends AbstractApi {
   // --------------------------------------------------------------------------------------------
   // Public methods
   // --------------------------------------------------------------------------------------------
+
+  public getMySavedReports(): AxiosPromise<IReport[]> {
+    const query: string = `query {
+      my {
+        savedList {
+          reportData ${QueryFields.reportListFields}
+        }
+      }
+    }`;
+
+    return this.http.post(
+      'graphql',
+      {
+        query
+      },
+      {
+        transformResponse: (data: string): IEliteTeam[] => generalResponseTransformer(data, 'my.savedList.reportData')
+      }
+    );
+  }
 
   public getMySavedTeams(): AxiosPromise<IEliteTeam[]> {
     const query: string = `query {

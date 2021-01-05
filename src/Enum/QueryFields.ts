@@ -117,6 +117,7 @@ const userFields: string = `{
       dateOfBirth
       placeOfBirth
       biographyAsHTML
+      profileDescriptionAsHTML
       nationality {
         name
         flagUrl {
@@ -171,6 +172,7 @@ const elitePlayerFields: string = `{
     imageUrl
     dateOfBirth
     biographyAsHTML
+    profileDescriptionAsHTML
     placeOfBirth
     nationality {
       name

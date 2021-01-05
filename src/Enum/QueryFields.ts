@@ -12,14 +12,6 @@ const profileFields: string = `{
   userId
 }`;
 
-const reportCompactFields: string = `{
-  id
-  scoutDate
-  skills {
-    total
-  }
-}`;
-
 const userLightFields: string = `{
   userId
   lastName

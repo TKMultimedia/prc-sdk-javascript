@@ -1,5 +1,4 @@
 const profileFields: string = `{
-  ratingPoint
   id
   follower {
     count
@@ -117,6 +116,7 @@ const userFields: string = `{
       imageUrl
       dateOfBirth
       placeOfBirth
+      biographyAsHTML
       nationality {
         name
         flagUrl {
@@ -170,6 +170,7 @@ const elitePlayerFields: string = `{
   userData {
     imageUrl
     dateOfBirth
+    biographyAsHTML
     placeOfBirth
     nationality {
       name

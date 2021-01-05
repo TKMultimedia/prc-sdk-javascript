@@ -94,6 +94,30 @@ const reportListFields: string = `{
   }
 }`;
 
+const reportDetailsFields: string = `{
+  skills {
+    speed
+    agility
+    puckHandling
+    strength
+    offensive
+    leadership
+    agression
+    shooting
+    acceleration
+    shootingAccuracy
+    definsive
+    hitting
+    shootingBlocking
+  }
+  scoutComment
+  longRangePotential
+  recommendation
+  id
+  scoutDate
+  game
+}`;
+
 const userFields: string = `{
   userId
   lastName
@@ -108,7 +132,7 @@ const userFields: string = `{
       key
     }
   }
-  reports ${reportCompactFields}
+  reports ${reportDetailsFields}
   playerMeta {
     playerId
     verified
@@ -214,27 +238,6 @@ const teamFields: string = `{
       small
     }
   }
-}`;
-
-const reportDetailsFields: string = `{
-  skills {
-    speed
-    agility
-    puckHandling
-    strength
-    offensive
-    leadership
-    agression
-    shooting
-    acceleration
-    shootingAccuracy
-    definsive
-    hitting
-    shootingBlocking
-  }
-  scoutComment
-  longRangePotential
-  recommendation
 }`;
 
 export default {

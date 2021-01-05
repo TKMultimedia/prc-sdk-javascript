@@ -101,6 +101,7 @@ const reportDetailsFields: string = `{
     definsive
     hitting
     shootingBlocking
+    total
   }
   scoutComment
   longRangePotential

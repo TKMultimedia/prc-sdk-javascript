@@ -1,4 +1,3 @@
-import TokenType from '../Enum/TokenType';
 import IUser from './IUser';
 
 export default interface IMediaFile {

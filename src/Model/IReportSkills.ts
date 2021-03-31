@@ -1,17 +1,16 @@
 export interface IReportSkillBase {
+  skatingMechanics: number; 
+  control: number;
   speed: number;
-  agility: number;
+  aggressiveness: number;
+  battle: number;
+  persistence: number;
+  vision: number;
+  position: number;
+  execution: number;
   puckHandling: number;
-  strength: number;
-  offensive: number;
-  leadership: number;
-  agression: number;
+  passing: number;
   shooting: number;
-  acceleration: number;
-  shootingAccuracy: number;
-  definsive: number;
-  hitting: number;
-  shootingBlocking: number;
 }
 export default interface IReportSkills extends IReportSkillBase {
   total: number;

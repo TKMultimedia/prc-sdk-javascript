@@ -88,19 +88,18 @@ const reportListFields: string = `{
 
 const reportDetailsFields: string = `{
   skills {
+    skatingMechanics
+    control
     speed
-    agility
+    aggressiveness
+    battle
+    persistence
+    vision
+    position
+    execution
     puckHandling
-    strength
-    offensive
-    leadership
-    agression
+    passing
     shooting
-    acceleration
-    shootingAccuracy
-    definsive
-    hitting
-    shootingBlocking
     total
   }
   scoutComment

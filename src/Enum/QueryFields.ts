@@ -108,6 +108,8 @@ const reportDetailsFields: string = `{
   id
   scoutDate
   game
+  createdBy
+  userId
 }`;
 
 const userFields: string = `{

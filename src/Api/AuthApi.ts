@@ -24,6 +24,7 @@ class AuthApi extends AbstractApi {
     accessToken
     refreshToken
     tokenType
+    verificationCode
   }`;
 
   public login(email: string, password: string): AxiosPromise<IAuth> {
@@ -33,6 +34,7 @@ class AuthApi extends AbstractApi {
         refreshToken
         resetPassword
         tokenType
+        verificationCode
       }
     }`;
 
@@ -58,6 +60,7 @@ class AuthApi extends AbstractApi {
         refreshToken
         resetPassword
         tokenType
+        verificationCode
       }
     }`;
 

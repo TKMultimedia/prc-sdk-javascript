@@ -5,4 +5,5 @@ export default interface IAuth {
   refreshToken: string;
   tokenType: TokenType;
   resetPassword?: boolean;
+  verificationCode?: string;
 }

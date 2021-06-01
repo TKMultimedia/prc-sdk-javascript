@@ -19,4 +19,5 @@ export default interface IUser {
   profile: IUserProfile;
   userPayment: IUserPayment;
   reports: IReport[];
+  verificationCode: string;
 }
